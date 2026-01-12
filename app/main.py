@@ -3,6 +3,10 @@ from fastapi.responses import JSONResponse
 
 app = FastAPI(title="Hello Name API", version="1.0")
 
+@app.get("/")
+def root():
+    return {"message": "Welcome to Hello Name API!"}
+
 @app.get("/hello/{name}")
 def say_hello(
     name: str = Path(..., min_length=1, max_length=50, description="Name to greet")
